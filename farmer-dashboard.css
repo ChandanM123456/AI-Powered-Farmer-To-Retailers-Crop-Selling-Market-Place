@@ -1,0 +1,194 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard-page {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    width: 100%;
+    text-align: center;
+}
+
+.dashboard-header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* Table Styles */
+.crops-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.crops-table th, .crops-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.crops-table th {
+    background-color: #27ae60;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.crops-table td {
+    background-color: #f9f9f9;
+}
+
+.crops-table img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+/* Button Styles */
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+/* Delete Button */
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Add Crops Button */
+#add-crops-btn {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    background-color: #2980b9;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#add-crops-btn:hover {
+    background-color: #1f618d;
+}
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard-page {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    width: 100%;
+    text-align: center;
+}
+
+.dashboard-header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* Table Styles */
+.crops-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.crops-table th, .crops-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.crops-table th {
+    background-color: #27ae60;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.crops-table td {
+    background-color: #f9f9f9;
+}
+
+.crops-table img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+/* Button Styles */
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+/* Delete Button */
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Add Crops Button */
+#add-crops-btn {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    background-color: #2980b9;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#add-crops-btn:hover {
+    background-color: #1f618d;
+}

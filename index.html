@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriConnect - Farmer to Retailer Marketplace</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Add CSS styles here */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .welcome-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .logo {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .auth-btn {
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .auth-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .farmer-btn {
+            background: #27ae60;
+            color: white;
+        }
+
+        .retailer-btn {
+            background: #2980b9;
+            color: white;
+        }
+
+        .login-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        .login-page {
+            display: none;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 50px auto;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7f8c8d;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 2px solid #ecf0f1;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #7f8c8d;
+        }
+
+        .registration-page {
+            display: none;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 50px auto;
+        }
+
+        .registration-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .registration-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .dashboard-page {
+            display: none;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 50px auto;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-btn {
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dashboard-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .sell-crops-btn {
+            background: #27ae60;
+            color: white;
+        }
+
+        .buy-products-btn {
+            background: #2980b9;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-page" id="welcome-page">
+        <h1 class="title">AI-Powered Farmer to Retailer Marketplace</h1>
+        <i class="fa fa-lock login-icon" id="login-icon"></i>
+        <div class="auth-buttons">
+            <button id="continue-as-farmer" class="auth-btn farmer-btn">
+                <i class="fa fa-user"></i> Farmer
+            </button>
+            <button id="continue-as-retailer" class="auth-btn retailer-btn">
+                <i class="fa fa-store"></i> Retailer
+            </button>
+        </div>
+    </div>
+
+    <div id="login-page" class="login-page">
+        <h2 class="login-header" id="user-type"></h2>
+        <form id="login-form" class="login-form">
+            <div class="input-group">
+                <i class="fa fa-user"></i>
+                <input type="text" id="username" placeholder="Username">
+            </div>
+            <div class="input-group">
+                <i class="fa fa-mobile"></i>
+                <input type="text" id="mobile" placeholder="Mobile Number">
+            </div>
+            <div class="input-group">
+                <i class="fa fa-lock"></i>
+                <input type="password" id="password" placeholder="Password">
+            </div>
+            <button id="login-btn" class="btn btn-success">Login</button>
+        </form>
+        <p class="mt-3">Not Registered? <a id="go-to-register" href="#">Register Here</a></p>
+    </div>
+
+    <div id="registration-page" class="registration-page">
+        <h2 class="registration-header" id="registration-user-type"></h2>
+        <form id="registration-form" class="registration-form">
+            <div class="input-group">
+                <i class="fa fa-user"></i>
+                <input type="text" id="reg-username" placeholder="Username">
+            </div>
+            <div class="input-group">
+                <i class="fa fa-mobile"></i>
+                <input type="text" id="reg-mobile" placeholder="Mobile Number">
+            </div>
+            <div class="input-group">
+                <i class="fa fa-lock"></i>
+                <input type="password" id="reg-password" placeholder="Password">
+            </div>
+            <div class="input-group">
+                <i class="fa fa-lock"></i>
+                <input type="password" id="reg-confirm-password" placeholder="Confirm Password">
+            </div>
+            <button id="register-btn" class="btn btn-primary">Register</button>
+            <p class="mt-3">Already Registered? <a id="go-to-login-from-register" href="#">Login Here</a></p>
+        </form>
+    </div>
+
+    <div id="dashboard-page" class="dashboard-page">
+        <h2 class="dashboard-header" id="dashboard-user-type"></h2>
+        <p id="dashboard-slogan"></p>
+        <button id="dashboard-action-btn" class="dashboard-btn"></button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
