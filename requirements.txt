@@ -1,0 +1,7 @@
+torch
+torchvision
+numpy
+pandas
+flask (or your backend framework)
+sqlite3 (built-in with Python)
+other necessary ML and web libraries
