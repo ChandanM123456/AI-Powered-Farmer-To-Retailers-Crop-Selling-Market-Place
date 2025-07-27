@@ -115,6 +115,6 @@ http://localhost:5000
 
 ## Contact
 
-For questions or collaborations, reach out at your-chandan.chandu@gmail.com
+For questions or collaborations, reach out at your- chandan.chandu@gmail.com
 
 # Thank you for exploring this impactful AI-powered marketplace project, advancing agriculture with technology!
