@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sell Your Crops</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    label { font-weight: bold; display: block; margin-bottom: 8px; }
+    input[type="text"], input[type="number"] { width: 200px; }
+    #form-message, #ai-rating-result { margin: 10px 0; font-weight: bold; }
+    #form-message { color: green; }
+    #ai-rating-result { color: #333; }
+  </style>
+</head>
+<body>
+  <h2>Sell Your Crops</h2>
+
+  <div id="form-message" aria-live="polite"></div>
+  <div id="ai-rating-result" aria-live="polite"></div>
+
+  <form id="sell-crops-form" enctype="multipart/form-data" autocomplete="off">
+
+    <label>
+      Farmer Name:
+      <input type="text" name="farmer_name" id="farmer-name" required />
+    </label>
+
+    <label>
+      Crop Name:
+      <input type="text" name="name" id="crop-name" required />
+    </label>
+
+    <label>
+      Crop Image:
+      <input type="file" name="image" id="crop-image" accept="image/*" required />
+    </label>
+
+    <label>
+      Price (₹/unit):
+      <input type="number" name="price" id="crop-price" min="1" required />
+    </label>
+
+    <label>
+      Quantity:
+      <input type="number" name="quantity" id="crop-quantity" min="1" required />
+    </label>
+
+    <label>
+      Location:
+      <input type="text" name="location" id="location" required />
+    </label>
+
+    <label>
+      Mobile Number:
+      <input type="tel" name="farmer_mobile" id="farmer-mobile" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit number" required />
+    </label>
+
+    <button id="add-crop-btn" type="submit">Add Crop</button>
+  </form>
+
+  <br />
+  <button id="go-back-btn" type="button" onclick="window.location.href='dashboard.html'">Back to Dashboard</button>
+
+  <script>
+    document.getElementById('sell-crops-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const formData = new FormData(form);
+      const messageDiv = document.getElementById('form-message');
+      const aiRatingDiv = document.getElementById('ai-rating-result');
+
+      messageDiv.textContent = '';
+      aiRatingDiv.textContent = '';
+
+      try {
+        const response = await fetch('http://localhost:5000/upload_crop', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (!response.ok) {
+          const err = await response.json();
+          messageDiv.style.color = 'red';
+          messageDiv.textContent = err.message || 'Error adding crop.';
+          return;
+        }
+
+        const result = await response.json();
+
+        if (result.success) {
+          messageDiv.style.color = 'green';
+          messageDiv.textContent = result.message || 'Crop added successfully!';
+          form.reset();
+
+          if (result.aiRating) {
+            aiRatingDiv.textContent = `AI Quality Rating: ${result.aiRating}`;
+          }
+        } else {
+          messageDiv.style.color = 'red';
+          messageDiv.textContent = result.message || 'Error adding crop.';
+        }
+      } catch (error) {
+        messageDiv.style.color = 'red';
+        messageDiv.textContent = 'Failed to connect to the server. Please try again later.';
+        console.error('Error during form submission:', error);
+      }
+    });
+  </script>
+</body>
+</html>
